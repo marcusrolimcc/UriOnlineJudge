@@ -1,12 +1,3 @@
-create database uri2609
-
-use uri2609
-
-create table categories(
-	
-	id int not null primary key identity(1,1),
-	name varchar(50) not null
-)
 /*
 create table products(
 	
