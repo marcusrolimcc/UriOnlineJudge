@@ -10,32 +10,41 @@ public class Uri1040 {
 
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		DecimalFormat df = new DecimalFormat("0.0");
+		double n1, n2, n3, n4, n5, media, media2;
+		int a = 2, b = 3, c = 4, d = 1;
 		
-		double n1 = sc.nextDouble();
-		double n2 = sc.nextDouble();
-		double n3 = sc.nextDouble();
-		double n4 = sc.nextDouble();
+		n1 = sc.nextDouble();
+		n2 = sc.nextDouble();
+		n3 = sc.nextDouble();
+		n4 = sc.nextDouble(); 
 		
-		double media = ((n1 * 2) + (n2 * 3) + (n3 * 4) + (n4 * 1)) / 10;
-		
-		System.out.println("Media final: " + df.format(media));
+		media = toDouble(((n1 * a) + (n2 * b) + (n3 * c) + (n4 * d))/( a + b + c + d));
+		System.out.println("Media: " + media);
 		if(media >= 7.0) {
 			System.out.println("Aluno aprovado.");
-		}else if(media < 5.0) {
+		} else if(media < 5.0) {
 			System.out.println("Aluno reprovado.");
-		}else if(media < 7.0 && media >= 5.0){
+		} else if(media >= 5.00 && media <= 6.9) {
 			System.out.println("Aluno em exame.");
-			double n5 = sc.nextDouble();
+			n5 = sc.nextDouble();
 			System.out.println("Nota do exame: " + n5);
-			media = (media + n5) / 2.0;
-			if(media > 5.0) {
+			media2 = toDouble((n5 + media) / 2);
+			if(media2 >= 5.0) {
+				
 				System.out.println("Aluno aprovado.");
-				System.out.println("Media final: " + df.format(media));
-			}else {
+			} else if (media2 <= 4.9) {
+				
 				System.out.println("Aluno reprovado.");
 			}
+			System.out.println("Media final: " + media2);
 		}
 		sc.close();
 	}
+	
+	private static double toDouble(double x) {
+		DecimalFormat format = new DecimalFormat("#0.0");
+		return Double.valueOf(format.format(x));
+		
+	}
+	
 }
